@@ -1,0 +1,15 @@
+.Inicio {
+  -fx-background-color: #1C282E;
+  -fx-color: blue;
+}
+
+.RellenarDatos {
+  -fx-border-color: #1C282E;
+  -fx-border-width: 2px;
+  -fx-border-radius: 2%;
+}
+
+.BotonesInicio {
+  -fx-background-radius: 10px;
+  -fx-color: #1C282E;
+}
