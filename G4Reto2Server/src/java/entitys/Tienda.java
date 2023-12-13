@@ -108,7 +108,7 @@ public class Tienda implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idTienda != null ? idTienda.hashCode() : 0);
         return hash;
     }
 
@@ -119,7 +119,7 @@ public class Tienda implements Serializable {
             return false;
         }
         Tienda other = (Tienda) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idTienda == null && other.idTienda != null) || (this.idTienda != null && !this.idTienda.equals(other.idTienda))) {
             return false;
         }
         return true;
@@ -127,7 +127,7 @@ public class Tienda implements Serializable {
 
     @Override
     public String toString() {
-        return "entitys.Tienda[ id=" + id + " ]";
+        return "entitys.Tienda[ id=" + idTienda + " ]";
     }
     
 }
