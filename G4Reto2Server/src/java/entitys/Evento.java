@@ -6,6 +6,7 @@
 package entitys;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +18,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -29,11 +31,10 @@ public class Evento implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Date fechaCreacion;
+    private LocalDate fechaCreacion;
     private double totalRecaudado;
     private int numParticipantes;
-    private List listaTiendas;
-    
+
     @ManyToOne
     @JoinColumn(name = "administrador_id")
     private Administrador administrador;
@@ -44,6 +45,49 @@ public class Evento implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    @OneToMany(mappedBy = "evento", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Tienda> listaTiendas = new ArrayList<>();
+
+    public LocalDate getFechaCreacion() {
+        return fechaCreacion;
+    }
+
+    public void setFechaCreacion(LocalDate fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
+    }
+
+    public double getTotalRecaudado() {
+        return totalRecaudado;
+    }
+
+    public void setTotalRecaudado(double totalRecaudado) {
+        this.totalRecaudado = totalRecaudado;
+    }
+
+    public int getNumParticipantes() {
+        return numParticipantes;
+    }
+
+    public void setNumParticipantes(int numParticipantes) {
+        this.numParticipantes = numParticipantes;
+    }
+
+    public List getListaTiendas() {
+        return listaTiendas;
+    }
+
+    public void setListaTiendas(List listaTiendas) {
+        this.listaTiendas = listaTiendas;
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
     }
 
     @Override
@@ -70,5 +114,5 @@ public class Evento implements Serializable {
     public String toString() {
         return "entitys.Evento[ id=" + id + " ]";
     }
-    
+
 }

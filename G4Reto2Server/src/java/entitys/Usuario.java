@@ -43,12 +43,12 @@ public class Usuario implements Serializable {
     private String nombre;
 
     @Column(nullable = false)
-    private String contraseña;
+    private String password;
 
     @Column(nullable = false, unique = true)
     private String correo;
 
-    @Temporal(TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date fechaNacimiento;
 
     @Enumerated(EnumType.STRING)
@@ -61,6 +61,46 @@ public class Usuario implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getContraseña() {
+        return password;
+    }
+
+    public void setContraseña(String contraseña) {
+        this.password = contraseña;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public Date getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public void setFechaNacimiento(Date fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public TipoUsuario getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoUsuario tipo) {
+        this.tipo = tipo;
     }
 
     @Override

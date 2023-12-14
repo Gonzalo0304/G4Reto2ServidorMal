@@ -31,12 +31,12 @@ public class Tienda implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idTienda;
-    
+
     /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
- */
+     */
     private double valorNeto;
     private double espacio;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -44,8 +44,8 @@ public class Tienda implements Serializable {
     private int idCliente;
     @Enumerated(EnumType.STRING)
     private TipoPago tipoPago;
-    
-     @OneToOne(mappedBy = "tienda", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+    @OneToOne(mappedBy = "tienda", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Cliente cliente;
 
     public TipoPago getTipoPago() {
@@ -104,7 +104,6 @@ public class Tienda implements Serializable {
         this.idCliente = idCliente;
     }
 
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -129,5 +128,5 @@ public class Tienda implements Serializable {
     public String toString() {
         return "entitys.Tienda[ id=" + idTienda + " ]";
     }
-    
+
 }
