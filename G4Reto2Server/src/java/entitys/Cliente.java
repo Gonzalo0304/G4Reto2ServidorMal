@@ -17,16 +17,22 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
+ * Clase que representa a un cliente en MarketMakers. Hereda de la clase base
+ * Usuario. Contiene información específica de los clientes, como el tipo de
+ * venta y la tienda asociada.
+ *
  * @author David
  */
 @Entity
-public class Cliente implements Serializable {
+public class Cliente extends Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
+    private String tipoDeVenta;
+
     @JoinColumn(name = "tienda_cliente")
     @OneToOne(fetch = FetchType.LAZY)
     private Tienda tienda;
@@ -72,5 +78,5 @@ public class Cliente implements Serializable {
     public String toString() {
         return "entitys.Cliente[ id=" + id + " ]";
     }
-    
+
 }

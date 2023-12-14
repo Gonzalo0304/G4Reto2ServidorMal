@@ -18,21 +18,31 @@ import javax.persistence.OneToMany;
 
 /**
  *
+ * Clase que representa a un administrador en MarketMakers. Hereda de la clase
+ * base Usuario. Contiene información específica de los administradores, como el
+ * número de eventos que han creado y administrado.
+ *
  * @author inigo
  */
 @Entity
-public class Administrador implements Serializable {
+public class Administrador extends Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private int numEventos;
-    
+
+    /**
+     * Relación One-to-Many que representa los eventos gestionados por este
+     * administrador. El campo 'administrador' en la clase Evento establece la
+     * relación inversa. Se utiliza la estrategia CascadeType.ALL para aplicar
+     * operaciones en cascada, y FetchType.LAZY para cargar la lista de eventos
+     * solo cuando sea necesario.
+     */
     @OneToMany(mappedBy = "administrador", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Evento> eventos = new ArrayList<>();
-
 
     public Long getId() {
         return id;
@@ -66,5 +76,5 @@ public class Administrador implements Serializable {
     public String toString() {
         return "entitys.Administrador[ id=" + id + " ]";
     }
-    
+
 }
