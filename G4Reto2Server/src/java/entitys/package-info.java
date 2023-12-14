@@ -4,11 +4,3 @@
  * and open the template in the editor.
  */
 package entitys;
-
-/**
- *
- * @author David
- */
-public enum TipoPago {
-    Efectivo, Tarjeta, EfectivoYTarjeta
-}

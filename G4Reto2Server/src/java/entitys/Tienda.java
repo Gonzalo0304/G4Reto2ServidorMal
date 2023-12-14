@@ -31,38 +31,16 @@ public class Tienda implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idTienda;
-    
-    /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-    private double valorNeto;
-    private double espacio;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fechadecreacion;
-    private int idCliente;
+    private String nombre;
+    private String descripcion;
     @Enumerated(EnumType.STRING)
     private TipoPago tipoPago;
-    
-     @OneToOne(mappedBy = "tienda", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private double espacio;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fechaCreacion;
+    private int idCliente;
+    @OneToOne(mappedBy = "tienda", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Cliente cliente;
-
-    public TipoPago getTipoPago() {
-        return tipoPago;
-    }
-
-    public void setTipoPago(TipoPago tipoPago) {
-        this.tipoPago = tipoPago;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
 
     public Integer getIdTienda() {
         return idTienda;
@@ -72,12 +50,28 @@ public class Tienda implements Serializable {
         this.idTienda = idTienda;
     }
 
-    public double getValorNeto() {
-        return valorNeto;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setValorNeto(double valorNeto) {
-        this.valorNeto = valorNeto;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public TipoPago getTipoPago() {
+        return tipoPago;
+    }
+
+    public void setTipoPago(TipoPago tipoPago) {
+        this.tipoPago = tipoPago;
     }
 
     public double getEspacio() {
@@ -88,12 +82,12 @@ public class Tienda implements Serializable {
         this.espacio = espacio;
     }
 
-    public Date getFechadecreacion() {
-        return fechadecreacion;
+    public Date getFechaCreacion() {
+        return fechaCreacion;
     }
 
-    public void setFechadecreacion(Date fechadecreacion) {
-        this.fechadecreacion = fechadecreacion;
+    public void setFechaCreacion(Date fechaCreacion) {
+        this.fechaCreacion = fechaCreacion;
     }
 
     public int getIdCliente() {
@@ -104,11 +98,20 @@ public class Tienda implements Serializable {
         this.idCliente = idCliente;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+    
+
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (idTienda != null ? idTienda.hashCode() : 0);
         return hash;
     }
 
@@ -119,15 +122,12 @@ public class Tienda implements Serializable {
             return false;
         }
         Tienda other = (Tienda) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.idTienda == null && other.idTienda != null) || (this.idTienda != null && !this.idTienda.equals(other.idTienda))) {
             return false;
         }
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "entitys.Tienda[ id=" + id + " ]";
-    }
+    
     
 }

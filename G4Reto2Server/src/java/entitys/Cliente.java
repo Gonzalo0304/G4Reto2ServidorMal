@@ -70,7 +70,9 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "entitys.Cliente[ id=" + id + " ]";
+        return "Cliente{" + "id=" + id + ", tienda=" + tienda + '}';
     }
+
+    
     
 }
